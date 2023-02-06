@@ -1,5 +1,7 @@
 import './App.css';
 import React from 'react';
+import Error500 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error500.tsx'
+import Error418 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error418.tsx'
 import { useState, useEffect } from 'react';
 
 interface StarWarsCharacter {
@@ -28,7 +30,9 @@ const App = () => {
         const json = (await apiResponse.json()) as StarWarsCharacter;
         setCharacter(json);
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -43,7 +47,9 @@ const App = () => {
       {errorText !== '' && <p>{errorText}</p>}
       {character && (
         <div>
-          <p>Character: The force will be with always {character?.name}</p>
+          <p>Name: The force will be with you always {character?.name}</p>
+          <Error500/>
+          <Error418/>
         </div>
       )}
     </div>
