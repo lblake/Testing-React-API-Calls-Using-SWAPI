@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-import Error500 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error500';
-import Error418 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error418';
+import Error500 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error500.tsx';
+import Error418 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error418.tsx';
 import { useState, useEffect } from 'react';
 
 interface StarWarsCharacter {
