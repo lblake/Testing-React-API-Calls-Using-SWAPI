@@ -1,13 +1,11 @@
 import './App.css';
 import React from 'react';
-import Error500 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error500.tsx'
-import Error418 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error418.tsx'
+import Error500 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error500';
+import Error418 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error418';
 import { useState, useEffect } from 'react';
 
 interface StarWarsCharacter {
   name: string;
-  height?: number;
-  hair_color?: string;
 }
 
 const baseURL = 'https://swapi.dev/api/people/';
@@ -48,8 +46,8 @@ const App = () => {
       {character && (
         <div>
           <p>Name: The force will be with you always {character?.name}</p>
-          <Error500/>
-          <Error418/>
+          <Error500 />
+          <Error418 />
         </div>
       )}
     </div>
