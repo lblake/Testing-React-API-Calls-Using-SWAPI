@@ -4,8 +4,6 @@ import { setupServer } from 'msw/node';
 import { errorHandlers } from './errorHandler';
 import { render, screen, waitFor } from '@testing-library/react';
 import App from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/App';
-import Error500 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error500';
-import Error418 from '/Users/lloyd/bootcamp/testing-react-api-calls-using-swapi/swapi-app/src/components/Error418';
 
 const server = setupServer(
   rest.get('https://swapi.dev/api/people/1', (req, res, ctx) => {
@@ -24,7 +22,7 @@ describe('Test Star Wars App Functionality', () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-  test('Displays a sentence with LukeSkywalker in it', async () => {
+  test('displays a sentence with Luke Skywalker in it', async () => {
     render(<App />);
 
     await waitFor(() => screen.findByText(/name:/i));
@@ -35,34 +33,22 @@ describe('Test Star Wars App Functionality', () => {
   });
 });
 
-describe('Test for Error conditions in App', () => {
+describe('Test for Error conditions in the App', () => {
   test('handles 500 server error', async () => {
-    // server.use(
-    //   rest.get('https://swapi.dev/api/people/1', (req, res, ctx) => {
-    //     return res(ctx.status(500));
-    //   })
-    // );
-
     //inported errors form errorhandler file
     server.use(...errorHandlers);
 
-    render(<Error500 />);
+    render(<App />);
 
     const error = await screen.findByText(/Oops/i);
     expect(error).toBeInTheDocument();
   });
 
   test('handles 418 server error', async () => {
-    // server.use(
-    //   rest.get('https://swapi.dev/api/people/1', (req, res, ctx) => {
-    //     return res(ctx.status(418));
-    //   })
-    // );
-
-    //inported errors form errorhandler file
+    //imported errors from errorhandler file
     server.use(...errorHandlers);
 
-    render(<Error418 />);
+    render(<App />);
 
     const error = await screen.findByText(/tea/i);
     expect(error).toBeInTheDocument();
